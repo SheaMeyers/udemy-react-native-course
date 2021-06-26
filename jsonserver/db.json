@@ -1,3 +1,24 @@
 {
-    "blogposts": []
+  "blogposts": [
+    {
+      "id": 1,
+      "title": "API Post",
+      "content": "this is from the api"
+    },
+    {
+      "title": "New stuff",
+      "content": "New content",
+      "id": 2
+    },
+    {
+      "title": "New stuff",
+      "content": "New content",
+      "id": 3
+    },
+    {
+      "title": "Callback worlds?",
+      "content": "Test it",
+      "id": 4
+    }
+  ]
 }
