@@ -1,39 +1,21 @@
-import React, { useState, useContext } from 'react';
+import React, {  useContext } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Text, Input, Button } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 import Spacer from '../components/Spacer';
 import { Context as AuthContext } from '../context/AuthContext';
+import AuthForm from '../components/AuthForm';
+
 
 const SignupScreen = ({ navigation }) => {
     const { state, signup } = useContext(AuthContext);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
     return (
         <View style={styles.container}>
-            <Text h3>Sign Up for Tracker</Text>
-            <Spacer/>
-            <Input 
-                autoCapitalize="none"
-                autoCorrect={false}
-                label="Email" 
-                value={email} 
-                onChangeText={setEmail}
-            />
-            <Spacer/>
-            <Input 
-                secureTextEntry
-                autoCapitalize="none"
-                autoCorrect={false}
-                label="Password" 
-                value={password} 
-                onChangeText={setPassword}
-            />
-            <Spacer/>
-            {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null }
-            <Button 
-                title="Sign Up" 
-                onPress={() => signup({ email, password })}
+            <AuthForm 
+                headerText='Sign Up for Tracker'
+                errorMessage={state.errorMessage}
+                submitButtonText='Sign Up'
+                onSubmit={signup}
             />
             <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
                 <Spacer>
@@ -57,12 +39,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         marginBottom: 250
-    },
-    errorMessage: {
-        fontSize: 16,
-        color: 'red',
-        marginBottom: 15,
-        marginLeft: 15
     },
     link: {
         color: 'blue'
